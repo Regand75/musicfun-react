@@ -1,0 +1,46 @@
+import type { CurrentUserReaction } from '@/common/enums';
+import type { Images, Tag, User } from '@/common/types';
+
+export type PlaylistsResponse = {
+  data: PlaylistData[];
+  meta: PlaylistMeta;
+};
+
+export type PlaylistData = {
+  id: string;
+  type: 'playlists';
+  attributes: PlaylistAttributes;
+};
+
+export type PlaylistMeta = {
+  page: number;
+  pageSize: number;
+  totalCount: number;
+  pagesCount: number;
+};
+
+export type PlaylistAttributes = {
+  title: string;
+  addedAt: string;
+  updatedAt: string;
+  order: number;
+  user: User;
+  images: Images;
+  tags: Tag[];
+  likesCount: number;
+  dislikesCount: number;
+  currentUserReaction: CurrentUserReaction;
+  tracksCount: number;
+};
+
+// Arguments
+export type FetchPlaylistsArgs = {
+  pageNumber?: number;
+  pageSize?: number;
+  search?: string;
+  sortBy?: 'addedAt' | 'likesCount';
+  sortDirection?: 'asc' | 'desc';
+  tagsIds?: string[];
+  userId?: string;
+  trackId?: string;
+};
