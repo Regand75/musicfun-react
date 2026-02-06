@@ -1,15 +1,19 @@
 import type { CurrentUserReaction } from '@/common/enums';
 import type { Images, Tag, User } from '@/common/types';
 
-export type PlaylistsResponse = {
-  data: PlaylistData[];
+export type PlaylistsResponse<T = ShortPlaylistAttributes> = {
+  data: PlaylistData<T>[];
   meta: PlaylistMeta;
 };
 
-export type PlaylistData = {
+export type PlaylistResponse<T = FullPlaylistAttributes> = {
+  data: PlaylistData<T>;
+};
+
+export type PlaylistData<T = FullPlaylistAttributes> = {
   id: string;
   type: 'playlists';
-  attributes: PlaylistAttributes;
+  attributes: T;
 };
 
 export type PlaylistMeta = {
@@ -19,8 +23,9 @@ export type PlaylistMeta = {
   pagesCount: number;
 };
 
-export type PlaylistAttributes = {
+export type FullPlaylistAttributes = {
   title: string;
+  description: string;
   addedAt: string;
   updatedAt: string;
   order: number;
@@ -33,6 +38,8 @@ export type PlaylistAttributes = {
   tracksCount: number;
 };
 
+export type ShortPlaylistAttributes = Omit<FullPlaylistAttributes, 'description'>;
+
 // Arguments
 export type FetchPlaylistsArgs = {
   pageNumber?: number;
@@ -43,4 +50,16 @@ export type FetchPlaylistsArgs = {
   tagsIds?: string[];
   userId?: string;
   trackId?: string;
+};
+
+export type CreatePlaylistArgs = {
+  data: {
+    type: 'playlists';
+    attributes: CreatePlaylistArgsAttributes;
+  };
+};
+
+export type CreatePlaylistArgsAttributes = {
+  title: string;
+  description: string;
 };

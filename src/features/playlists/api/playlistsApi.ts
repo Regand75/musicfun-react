@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { PlaylistsResponse } from '@/features/playlists/api/playlistsApi.types';
+import type {
+  CreatePlaylistArgs,
+  PlaylistResponse,
+  PlaylistsResponse,
+} from '@/features/playlists/api/playlistsApi.types';
 
 export const playlistsApi = createApi({
   reducerPath: 'playlistsApi',
@@ -13,7 +17,10 @@ export const playlistsApi = createApi({
     fetchPlaylists: build.query<PlaylistsResponse, void>({
       query: () => `playlists`,
     }),
+    createPlaylists: build.mutation<PlaylistResponse, CreatePlaylistArgs>({
+      query: (body) => ({ method: 'post', url: `playlists`, body }),
+    }),
   }),
 });
 
-export const { useFetchPlaylistsQuery } = playlistsApi;
+export const { useFetchPlaylistsQuery, useCreatePlaylistsMutation } = playlistsApi;
