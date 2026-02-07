@@ -3,7 +3,7 @@ import type { CreatePlaylistArgsAttributes } from '@/features/playlists/api/play
 import { useCreatePlaylistsMutation } from '@/features/playlists/api/playlistsApi.ts';
 
 export const CreatePlaylistForm = () => {
-  const { register, handleSubmit } = useForm<CreatePlaylistArgsAttributes>();
+  const { register, handleSubmit, reset } = useForm<CreatePlaylistArgsAttributes>();
 
   const [createPlaylists] = useCreatePlaylistsMutation();
 
@@ -13,7 +13,9 @@ export const CreatePlaylistForm = () => {
         type: 'playlists',
         attributes: value,
       },
-    });
+    })
+      .unwrap()
+      .then(() => reset());
   };
 
   return (
