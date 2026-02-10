@@ -4,3 +4,4 @@ export { PlaylistItem } from './PlaylistItem/PlaylistItem.tsx';
 export { EditPlaylistForm } from './EditPlaylistForm/EditPlaylistForm.tsx';
 export { PlaylistCover } from './PlaylistItem/PlaylistCover/PlaylistCover';
 export { PlaylistDescription } from './PlaylistItem/PlaylistDescription/PlaylistDescription';
+export { PlaylistList } from './PlaylistList/PlaylistList';
