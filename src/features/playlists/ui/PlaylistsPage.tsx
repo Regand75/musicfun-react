@@ -8,7 +8,7 @@ import { PlaylistList } from '@/features/playlists/ui/PlaylistList/PlaylistList'
 
 export const PlaylistsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(2);
+  const [pageSize, setPageSize] = useState(8);
   const [search, setSearch] = useState('');
   const debounceSearch = useDebounceValue(search);
   const { data: playlistsData, isLoading } = useFetchPlaylistsQuery({
