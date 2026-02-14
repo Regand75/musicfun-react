@@ -3,3 +3,4 @@ export { Header } from './Header/Header.tsx';
 export { Pagination } from './Pagination/Pagination';
 export { PaginationControls } from './Pagination/PaginationControls/PaginationControls.tsx';
 export { PageSizeSelector } from './Pagination/PageSizeSelector/PageSizeSelector.tsx';
+export { LinearProgress } from './LinearProgress/LinearProgress';

@@ -4,9 +4,11 @@ import { LoadingTrigger } from '@/features/tracks/ui/LoadingTrigger/LoadingTrigg
 import { useInfiniteScroll } from '@/common/hooks';
 
 export const TracksPage = () => {
-  const { data, hasNextPage, isFetching, isFetchingNextPage, fetchNextPage } = useFetchTracksInfiniteQuery();
+  const { data, hasNextPage, isLoading, isFetching, isFetchingNextPage, fetchNextPage } = useFetchTracksInfiniteQuery();
   const { observerRef } = useInfiniteScroll({ fetchNextPage, hasNextPage, isFetching });
   const pages = data?.pages.flatMap((page) => page.data) || [];
+
+  if (isLoading) return <h1>Skeleton loader...</h1>;
 
   return (
     <div>
