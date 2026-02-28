@@ -23,9 +23,10 @@ export const EditPlaylistForm = ({ playlistId, setPlaylistId, editPlaylist, regi
           attributes: data,
         },
       },
-    })
-      .unwrap()
-      .then(() => setPlaylistId(null));
+    });
+    setPlaylistId(null);
+    // .unwrap()
+    // .then(() => setPlaylistId(null));
   };
 
   return (
