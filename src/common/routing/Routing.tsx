@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router';
 import { PlaylistsPage } from '@/features/playlists/ui';
 import { TracksPage } from '@/features/tracks/ui';
-import { ProfilePage } from '@/features/auth/ui';
+import { OAuthCallback, ProfilePage } from '@/features/auth/ui';
 import { PageNotFound } from '@/common/components';
 import { MainPage } from '@/app/ui';
 import { Path } from '@/common/routing/paths.ts';
@@ -12,6 +12,7 @@ export const Routing = () => (
     <Route path={Path.Playlists} element={<PlaylistsPage />} />
     <Route path={Path.Tracks} element={<TracksPage />} />
     <Route path={Path.Profile} element={<ProfilePage />} />
+    <Route path={Path.OAuthRedirect} element={<OAuthCallback />} />
     <Route path={Path.NotFound} element={<PageNotFound />} />
   </Routes>
 );
