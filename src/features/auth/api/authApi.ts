@@ -10,7 +10,7 @@ export const authApi = baseApi.injectEndpoints({
         providesTags: ['Auth'],
       }),
       login: build.mutation<LoginResponse, LoginArgs>({
-        query: (payload) => ({ method: 'post', url: `auth/login`, body: { ...payload, accessTokenTTL: '3m' } }),
+        query: (payload) => ({ method: 'post', url: `auth/login`, body: { ...payload, accessTokenTTL: '15m' } }),
         onQueryStarted: async (_args, { dispatch, queryFulfilled }) => {
           const { data } = await queryFulfilled;
           localStorage.setItem(AUTH_KEYS.accessToken, data.accessToken);
