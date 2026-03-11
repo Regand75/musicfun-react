@@ -1,23 +1,19 @@
 import s from './PlaylistList.module.css';
 import { EditPlaylistForm, PlaylistItem } from '@/features/playlists/ui';
-import { useDeletePlaylistsMutation, useGetPlaylistQuery } from '@/features/playlists/api/playlistsApi';
-import type {
-  PlaylistData,
-  ShortPlaylistAttributes,
-  UpdatePlaylistArgsAttributes,
-} from '@/features/playlists/api/playlistsApi.types';
+import { useDeletePlaylistMutation, useGetPlaylistQuery } from '@/features/playlists/api/playlistsApi';
+import type { ShortPlaylistData, UpdatePlaylistArgsAttributes } from '@/features/playlists/api/playlistsApi.types';
 import { useEffect, useState } from 'react';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useForm } from 'react-hook-form';
 
 type Props = {
-  playlist: PlaylistData<ShortPlaylistAttributes>[];
+  playlist: ShortPlaylistData[];
   isPlaylistsLoading: boolean;
 };
 
 export const PlaylistList = ({ playlist, isPlaylistsLoading }: Props) => {
   const [playlistId, setPlaylistId] = useState<string | null>(null);
-  const [deletePlaylists] = useDeletePlaylistsMutation();
+  const [deletePlaylists] = useDeletePlaylistMutation();
   const { data: playlistData } = useGetPlaylistQuery(playlistId ?? skipToken);
   const { register, handleSubmit, reset } = useForm<UpdatePlaylistArgsAttributes>();
 

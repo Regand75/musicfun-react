@@ -1,14 +1,14 @@
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import type { CreatePlaylistArgsAttributes } from '@/features/playlists/api/playlistsApi.types.ts';
-import { useCreatePlaylistsMutation } from '@/features/playlists/api/playlistsApi.ts';
+import { useCreatePlaylistMutation } from '@/features/playlists/api/playlistsApi.ts';
 
 export const CreatePlaylistForm = () => {
   const { register, handleSubmit, reset } = useForm<CreatePlaylistArgsAttributes>();
 
-  const [createPlaylists] = useCreatePlaylistsMutation();
+  const [createPlaylist] = useCreatePlaylistMutation();
 
   const onSubmit: SubmitHandler<CreatePlaylistArgsAttributes> = (value) => {
-    createPlaylists({
+    createPlaylist({
       data: {
         type: 'playlists',
         attributes: value,

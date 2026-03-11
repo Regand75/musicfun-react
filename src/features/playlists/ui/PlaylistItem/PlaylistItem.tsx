@@ -1,8 +1,8 @@
-import type { PlaylistData, ShortPlaylistAttributes } from '@/features/playlists/api/playlistsApi.types';
+import type { ShortPlaylistData } from '@/features/playlists/api/playlistsApi.types';
 import { PlaylistCover, PlaylistDescription } from '@/features/playlists/ui';
 
 type Props = {
-  playlist: PlaylistData<ShortPlaylistAttributes>;
+  playlist: ShortPlaylistData;
   deletePlaylist: (playlistId: string) => void;
   editPlaylist: (playlistId: string) => void;
 };
