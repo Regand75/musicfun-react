@@ -23,6 +23,32 @@ export type UpdatePlaylistArgsAttributes = z.infer<typeof UpdatePlaylistArgsAttr
 export type CreatePlaylistArgs = z.infer<typeof CreatePlaylistArgsSchema>;
 export type UpdatePlaylistArgs = z.infer<typeof UpdatePlaylistArgsSchema>;
 
+// Arguments
+export type FetchPlaylistsArgs = {
+  pageNumber?: number;
+  pageSize?: number;
+  search?: string;
+  sortBy?: 'addedAt' | 'likesCount';
+  sortDirection?: 'asc' | 'desc';
+  tagsIds?: string[];
+  userId?: string;
+  trackId?: string;
+};
+
+export type PlaylistCreatedEvent = {
+  type: 'tracks.playlist-created';
+  payload: {
+    data: FullPlaylistData;
+  };
+};
+
+export type PlaylistUpdateEvent = {
+  type: 'tracks.playlist-updated';
+  payload: {
+    data: FullPlaylistData;
+  };
+};
+
 // type PlaylistType = 'playlists';
 //
 // export type PlaylistsResponse<T = ShortPlaylistAttributes> = {
@@ -63,18 +89,6 @@ export type UpdatePlaylistArgs = z.infer<typeof UpdatePlaylistArgsSchema>;
 // };
 //
 // export type ShortPlaylistAttributes = Omit<FullPlaylistAttributes, 'description'>;
-
-// Arguments
-export type FetchPlaylistsArgs = {
-  pageNumber?: number;
-  pageSize?: number;
-  search?: string;
-  sortBy?: 'addedAt' | 'likesCount';
-  sortDirection?: 'asc' | 'desc';
-  tagsIds?: string[];
-  userId?: string;
-  trackId?: string;
-};
 
 // export type PlaylistsArgs<T> = {
 //   data: PlaylistArgsData<T>;
